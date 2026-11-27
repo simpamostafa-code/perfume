@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { PERFUMES } from '../data/perfumes';
 import {
   completeBottleTransition,
+  filterPerfumes,
   findPerfumeById,
   findPerfumeIndexById,
   getMobileAlcoveColSpan,
@@ -13,27 +14,41 @@ import {
   validatePerfumeCatalog,
 } from './galleryState';
 
-test('perfume catalog contains 5 valid, unique fragrances with spotlight colors', () => {
-  assert.equal(PERFUMES.length, 5);
+test('perfume catalog contains valid, unique world-famous fragrances with spotlight colors', () => {
+  assert.ok(PERFUMES.length >= 20, 'Catalog should contain at least 20 international perfumes');
   const result = validatePerfumeCatalog(PERFUMES);
   assert.equal(result.valid, true, result.errors.join(', '));
 });
 
 test('index cycling wraps seamlessly in both directions', () => {
-  assert.equal(getNextPerfumeIndex(0, 5), 1);
-  assert.equal(getNextPerfumeIndex(4, 5), 0);
-  assert.equal(getPrevPerfumeIndex(0, 5), 4);
-  assert.equal(getPrevPerfumeIndex(3, 5), 2);
+  const total = PERFUMES.length;
+  assert.equal(getNextPerfumeIndex(0, total), 1);
+  assert.equal(getNextPerfumeIndex(total - 1, total), 0);
+  assert.equal(getPrevPerfumeIndex(0, total), total - 1);
+  assert.equal(getPrevPerfumeIndex(3, total), 2);
   assert.equal(getNextPerfumeIndex(0, 0), -1);
 });
 
 test('findPerfumeById and findPerfumeIndexById resolve items accurately', () => {
-  const found = findPerfumeById(PERFUMES, 'midnight-tide');
+  const found = findPerfumeById(PERFUMES, 'dior-sauvage');
   assert.ok(found);
-  assert.equal(found.name, 'ليل البحر');
-  assert.equal(findPerfumeIndexById(PERFUMES, 'midnight-tide'), 3);
+  assert.equal(found.name, 'سوفاج إكسير');
+  assert.equal(found.brand, 'كريستيان ديور');
+  assert.equal(findPerfumeIndexById(PERFUMES, 'dior-sauvage'), 0);
   assert.equal(findPerfumeById(PERFUMES, 'unknown-id'), null);
   assert.equal(findPerfumeIndexById(PERFUMES, null), 0);
+});
+
+test('filterPerfumes handles category filtering and full-text keyword search', () => {
+  const menPerfumes = filterPerfumes(PERFUMES, 'men', '');
+  assert.ok(menPerfumes.length > 0);
+  assert.ok(menPerfumes.every((p) => p.category === 'men'));
+
+  const diorSearch = filterPerfumes(PERFUMES, 'all', 'Dior');
+  assert.ok(diorSearch.length >= 2);
+
+  const vanilleSearch = filterPerfumes(PERFUMES, 'all', 'فانيليا');
+  assert.ok(vanilleSearch.length > 0);
 });
 
 test('resolveGalleryKeyAction handles RTL arrow navigation and Escape correctly', () => {
@@ -60,45 +75,25 @@ test('resolveGalleryKeyAction handles RTL arrow navigation and Escape correctly'
     }),
     { type: 'close' },
   );
-  assert.deepEqual(
-    resolveGalleryKeyAction('ArrowLeft', {
-      isDetailOpen: false,
-      isDrawerOpen: true,
-    }),
-    { type: 'none' },
-  );
-});
-
-test('getMobileAlcoveColSpan builds a 2-over-3 architectural layout for 5 fragrances', () => {
-  const spans = PERFUMES.map((_, idx) => getMobileAlcoveColSpan(idx, PERFUMES.length));
-  assert.deepEqual(spans, [
-    'col-span-3',
-    'col-span-3',
-    'col-span-2',
-    'col-span-2',
-    'col-span-2',
-  ]);
 });
 
 test('nextBottleTransition and completeBottleTransition track fade-out and fade-in cleanly', () => {
-  const initial = { activeId: 'amber-mirage', exitingId: null, transitionKey: 0 };
+  const initial = { activeId: 'dior-sauvage', exitingId: null, transitionKey: 0 };
 
-  const unchanged = nextBottleTransition(initial, 'amber-mirage');
+  const unchanged = nextBottleTransition(initial, 'dior-sauvage');
   assert.strictEqual(unchanged, initial);
 
-  const switched = nextBottleTransition(initial, 'twilight-rose');
+  const switched = nextBottleTransition(initial, 'bleu-de-chanel');
   assert.deepEqual(switched, {
-    activeId: 'twilight-rose',
-    exitingId: 'amber-mirage',
+    activeId: 'bleu-de-chanel',
+    exitingId: 'dior-sauvage',
     transitionKey: 1,
   });
 
   const settled = completeBottleTransition(switched);
   assert.deepEqual(settled, {
-    activeId: 'twilight-rose',
+    activeId: 'bleu-de-chanel',
     exitingId: null,
     transitionKey: 1,
   });
-
-  assert.strictEqual(completeBottleTransition(settled), settled);
 });

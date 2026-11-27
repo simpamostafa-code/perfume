@@ -1,4 +1,4 @@
-import type { PerfumeItem } from '../data/perfumes';
+import type { PerfumeItem, FragranceCategory } from '../data/perfumes';
 
 export type GalleryKeyAction =
   | { type: 'next' }
@@ -44,6 +44,37 @@ export function findPerfumeIndexById(
   if (!id) return 0;
   const idx = perfumes.findIndex((item) => item.id === id);
   return idx >= 0 ? idx : 0;
+}
+
+/**
+ * Filters perfumes by category and search query (name, brand, notes, family).
+ */
+export function filterPerfumes(
+  perfumes: readonly PerfumeItem[],
+  category: FragranceCategory,
+  searchQuery: string,
+): PerfumeItem[] {
+  const query = searchQuery.trim().toLowerCase();
+
+  return perfumes.filter((item) => {
+    const matchesCategory =
+      category === 'all' || item.category === category;
+
+    if (!matchesCategory) return false;
+    if (!query) return true;
+
+    return (
+      item.name.toLowerCase().includes(query) ||
+      item.nameEn.toLowerCase().includes(query) ||
+      item.brand.toLowerCase().includes(query) ||
+      item.brandEn.toLowerCase().includes(query) ||
+      item.family.toLowerCase().includes(query) ||
+      item.description.toLowerCase().includes(query) ||
+      item.notes.top.toLowerCase().includes(query) ||
+      item.notes.heart.toLowerCase().includes(query) ||
+      item.notes.base.toLowerCase().includes(query)
+    );
+  });
 }
 
 /**
@@ -123,14 +154,13 @@ export function validatePerfumeCatalog(perfumes: readonly PerfumeItem[]): {
 }
 
 /**
- * Returns the 6-column mobile bento grid span class matching the reference
- * 2-over-3 architectural layout (2 wide alcoves on top, 3 alcoves below).
+ * Returns the column span class for mobile bento grid.
  */
 export function getMobileAlcoveColSpan(index: number, total: number): string {
   if (total === 5) {
     return index < 2 ? 'col-span-3' : 'col-span-2';
   }
-  return 'col-span-3';
+  return 'col-span-3 sm:col-span-2';
 }
 
 export interface BottleTransitionState {
@@ -171,5 +201,3 @@ export function completeBottleTransition(
     exitingId: null,
   };
 }
-
-
