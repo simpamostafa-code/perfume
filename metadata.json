@@ -1,0 +1,8 @@
+{
+  "name": "دار سَديم — مجموعة العطور الفاخرة",
+  "description": "معرض تفاعلي فاخر يعرض مجموعة من خمسة عطور حصرية داخل تجاويف حجرية داكنة بإضاءة سبوت لايت ملونة وانتقالات سينمائية سلسة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

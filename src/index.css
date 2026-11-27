@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Amiri", Georgia, serif;
+  --font-sans: "IBM Plex Sans Arabic", system-ui, -apple-system, sans-serif;
+  --color-obsidian: #030304;
+  --color-charcoal: #121216;
+  --color-ivory: #F5F3EF;
+  --color-stone-muted: #A19E98;
+}
+
+@layer base {
+  html {
+    background-color: #030304;
+    color: #F5F3EF;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #030304;
+    overflow-x: hidden;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid rgba(245, 243, 239, 0.72);
+    outline-offset: 2px;
+  }
+}
+
+/* Deep 3D carved architectural rough-stone recess matching the boutique monolith wall */
+.stone-niche-frame {
+  box-shadow:
+    inset 16px 0 28px -8px rgba(0, 0, 0, 0.96),
+    inset -16px 0 28px -8px rgba(0, 0, 0, 0.96),
+    inset 0 18px 28px -12px rgba(0, 0, 0, 0.85),
+    inset 0 -32px 44px -10px rgba(0, 0, 0, 0.98),
+    0 24px 60px -12px rgba(0, 0, 0, 0.9);
+}
+
+/* Subtle 3D beveled vertical inner walls inside each carved stone chamber */
+.stone-niche-side-left {
+  background: linear-gradient(
+    90deg,
+    rgba(22, 22, 26, 0.95) 0%,
+    rgba(10, 10, 12, 0.92) 60%,
+    transparent 100%
+  );
+  border-right: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.stone-niche-side-right {
+  background: linear-gradient(
+    270deg,
+    rgba(22, 22, 26, 0.95) 0%,
+    rgba(10, 10, 12, 0.92) 60%,
+    transparent 100%
+  );
+  border-left: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+/* Seamless 4-edge feathering for 3:4 studio bottle photography (removes baked-in studio top edge while keeping cap & bottle razor sharp) */
+.bottle-feather-mask {
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse 44% 46% at 50% 56%,
+      rgba(0, 0, 0, 1) 46%,
+      rgba(0, 0, 0, 0.72) 66%,
+      rgba(0, 0, 0, 0) 92%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 14%,
+      rgba(0, 0, 0, 1) 26%,
+      rgba(0, 0, 0, 1) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-image:
+    radial-gradient(
+      ellipse 44% 46% at 50% 56%,
+      rgba(0, 0, 0, 1) 46%,
+      rgba(0, 0, 0, 0.72) 66%,
+      rgba(0, 0, 0, 0) 92%
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0) 14%,
+      rgba(0, 0, 0, 1) 26%,
+      rgba(0, 0, 0, 1) 88%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  mask-composite: intersect;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes alcoveRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes nicheExpandIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spotlightBloom {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bottleArrive {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes bottleCinematicFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.965);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes bottleCinematicFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.955);
+    filter: blur(5px);
+  }
+}
+
+@keyframes editorialFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hairlineExpand {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.animate-gallery-in {
+  animation: galleryFadeIn 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-alcove-rise {
+  animation: alcoveRise 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-niche-expand {
+  animation: nicheExpandIn 580ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-spotlight-bloom {
+  animation: spotlightBloom 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-bottle-arrive {
+  animation: bottleArrive 640ms cubic-bezier(0.16, 1, 0.3, 1) 40ms both;
+}
+
+.animate-bottle-fade-in {
+  will-change: opacity, transform, filter;
+  animation: bottleCinematicFadeIn 620ms cubic-bezier(0.16, 1, 0.3, 1) 90ms both;
+}
+
+.animate-bottle-fade-out {
+  will-change: opacity, transform, filter;
+  animation: bottleCinematicFadeOut 440ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-editorial-in {
+  animation: editorialFadeUp 560ms cubic-bezier(0.16, 1, 0.3, 1) 110ms both;
+}
+
+.animate-hairline-expand {
+  transform-origin: right center;
+  animation: hairlineExpand 700ms cubic-bezier(0.16, 1, 0.3, 1) 180ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
