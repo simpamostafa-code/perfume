@@ -1,11 +1,6 @@
 /**
- * موسوعة العطور العالمية الفاخرة — دار العطور العالمية
- * Haute Parfumerie Internationale
- * -------------------------------------------------------------------------
- * تضم أشهر وأرقى العطور العالمية من كبرى دور العطور والنيش حول العالم:
- * Dior, Chanel, Creed, Tom Ford, Maison Francis Kurkdjian, Kilian,
- * Louis Vuitton, Amouage, Parfums de Marly, Roja Dove, Le Labo,
- * Giorgio Armani, Versace, YSL, Hermes, وغيرها.
+ * موسوعة ومنفذ بيع العطور العالمية الفاخرة — دار العطور العالمية
+ * Haute Parfumerie Internationale — Store & Outlet
  */
 
 export interface PerfumeNotes {
@@ -44,23 +39,49 @@ export interface PerfumeItem {
   spotlightColor: string;
   spotlightRgb: string;
   image: string;
+  price: number;
+  originalPrice?: number;
+  inStock: boolean;
+  rating: number;
+  reviewsCount: number;
+  badge?: string;
   flaconStyle?: 'dior' | 'chanel' | 'tom-ford' | 'creed' | 'baccarat' | 'kilian' | 'amouage' | 'marly' | 'classic';
 }
 
-export const COLLECTION_INFO = {
-  brandName: 'موسوعة العطور العالمية',
-  brandEn: 'Haute Parfumerie Internationale',
-  collectionTitle: 'روائع العطور العالمية',
-  collectionSubtitle: 'صور زجاجات العطور العالمية الأصلية تحت إضاءة الحجر السينمائية',
+export interface StoreConfig {
+  brandName: string;
+  brandEn: string;
+  collectionTitle: string;
+  collectionSubtitle: string;
+  editionLabel: string;
+  currency: string;
+  whatsappNumber: string;
+  freeShippingThreshold: number;
+  adminPin: string;
+  guaranteeText: string;
+}
+
+export const STORE_CONFIG: StoreConfig = {
+  brandName: 'منفذ العطور العالمية الفاخرة',
+  brandEn: 'Haute Parfumerie Outlet',
+  collectionTitle: 'روائع العطور العالمية الأصلية',
+  collectionSubtitle: 'منفذ البيع الحصري لأفخم العطور الفرنسية والنيش النادر بضمان أصلي 100%',
   editionLabel: 'المجموعة العالمية الشاملة · ٢٠٢٦',
-} as const;
+  currency: 'ر.س',
+  whatsappNumber: '+966500000000',
+  freeShippingThreshold: 450,
+  adminPin: 'admin123',
+  guaranteeText: 'ضمان أصلي 100% · فحص ومعاينة قبل الاستلام · شحن سريع لكافة المدن',
+};
+
+export const COLLECTION_INFO = STORE_CONFIG;
 
 export const CATEGORIES: { id: FragranceCategory; label: string; count?: number }[] = [
-  { id: 'all', label: 'جميع العطور العالمية' },
+  { id: 'all', label: 'جميع العطور' },
   { id: 'niche', label: 'عطور النيش الفاخرة' },
   { id: 'men', label: 'أيقونات رجالية' },
   { id: 'women', label: 'أيقونات نسائية' },
-  { id: 'oriental', label: 'عطور شرقية وعود ملكي' },
+  { id: 'oriental', label: 'عطور شرقية وعود' },
   { id: 'fresh', label: 'عطور صيفية ومنعشة' },
   { id: 'warm', label: 'عطور شتوية ودافئة' },
 ];
@@ -96,6 +117,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#254E80',
     spotlightRgb: '37, 78, 128',
     image: '/assets/bottles/dior-sauvage.png',
+    price: 680,
+    originalPrice: 790,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 384,
+    badge: 'الأكثر مبيعاً',
     flaconStyle: 'dior',
   },
 
@@ -126,6 +153,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#1A3358',
     spotlightRgb: '26, 51, 88',
     image: '/assets/bottles/bleu-de-chanel.png',
+    price: 640,
+    originalPrice: 730,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 412,
+    badge: 'كلاسيكي أيقوني',
     flaconStyle: 'chanel',
   },
 
@@ -156,6 +189,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#C0152F',
     spotlightRgb: '192, 21, 47',
     image: '/assets/bottles/baccarat-rouge-540.png',
+    price: 1390,
+    originalPrice: 1550,
+    inStock: true,
+    rating: 5.0,
+    reviewsCount: 520,
+    badge: 'قمة النيش العالمي',
     flaconStyle: 'baccarat',
   },
 
@@ -186,6 +225,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#A4B0BE',
     spotlightRgb: '164, 176, 190',
     image: '/assets/bottles/creed-aventus.png',
+    price: 1190,
+    originalPrice: 1350,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 460,
+    badge: 'عطر النخبة',
     flaconStyle: 'creed',
   },
 
@@ -216,6 +261,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#D99B38',
     spotlightRgb: '217, 155, 56',
     image: '/assets/bottles/tom-ford-tobacco-vanille.png',
+    price: 1050,
+    originalPrice: 1200,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 290,
+    badge: 'دافئ شتوي فاخر',
     flaconStyle: 'tom-ford',
   },
 
@@ -246,6 +297,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#6B513E',
     spotlightRgb: '107, 81, 62',
     image: '/assets/bottles/tom-ford-oud-wood.png',
+    price: 1090,
+    originalPrice: 1250,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 310,
+    badge: 'عود غربي ناعم',
     flaconStyle: 'tom-ford',
   },
 
@@ -276,6 +333,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#8C5224',
     spotlightRgb: '140, 82, 36',
     image: '/assets/bottles/lv-ombre-nomade.jpg',
+    price: 1550,
+    originalPrice: 1750,
+    inStock: true,
+    rating: 5.0,
+    reviewsCount: 490,
+    badge: 'عطر الفخامة الملكية',
     flaconStyle: 'classic',
   },
 
@@ -306,6 +369,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#E29738',
     spotlightRgb: '226, 151, 56',
     image: '/assets/bottles/kilian-angels-share.jpg',
+    price: 920,
+    originalPrice: 1050,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 340,
+    badge: 'نوتة الكونياك والقرفة',
     flaconStyle: 'kilian',
   },
 
@@ -336,6 +405,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#BD4871',
     spotlightRgb: '189, 72, 113',
     image: '/assets/bottles/ysl-black-opium.png',
+    price: 520,
+    originalPrice: 610,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 430,
+    badge: 'عطر السهرات النسائي',
     flaconStyle: 'classic',
   },
 
@@ -366,6 +441,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#2B547E',
     spotlightRgb: '43, 84, 126',
     image: '/assets/bottles/pdm-layton.png',
+    price: 980,
+    originalPrice: 1150,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 380,
+    badge: 'عطر الأمراء',
     flaconStyle: 'marly',
   },
 
@@ -396,6 +477,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#E8A3B8',
     spotlightRgb: '232, 163, 184',
     image: '/assets/bottles/pdm-delina.png',
+    price: 1120,
+    originalPrice: 1280,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 395,
+    badge: 'أميرة العطور الوردية',
     flaconStyle: 'marly',
   },
 
@@ -426,6 +513,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#D4AF37',
     spotlightRgb: '212, 175, 55',
     image: '/assets/bottles/chanel-no-5.png',
+    price: 690,
+    originalPrice: 780,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 650,
+    badge: 'أسطورة باريس',
     flaconStyle: 'chanel',
   },
 
@@ -456,6 +549,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#1F3A60',
     spotlightRgb: '31, 58, 96',
     image: '/assets/bottles/amouage-interlude.png',
+    price: 1180,
+    originalPrice: 1350,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 310,
+    badge: 'فوحان وثبات أسطوري',
     flaconStyle: 'amouage',
   },
 
@@ -486,6 +585,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#3480B8',
     spotlightRgb: '52, 128, 184',
     image: '/assets/bottles/roja-elysium.png',
+    price: 1290,
+    originalPrice: 1450,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 275,
+    badge: 'نيش لندن الراقي',
     flaconStyle: 'classic',
   },
 
@@ -516,6 +621,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#C49E6C',
     spotlightRgb: '196, 158, 108',
     image: '/assets/bottles/le-labo-santal-33.png',
+    price: 1080,
+    originalPrice: 1220,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 350,
+    badge: 'خشب الصندل المميز',
     flaconStyle: 'classic',
   },
 
@@ -546,6 +657,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#235D7A',
     spotlightRgb: '35, 93, 122',
     image: '/assets/bottles/acqua-di-gio.png',
+    price: 540,
+    originalPrice: 620,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 490,
+    badge: 'ملك الانتعاش الصيفي',
     flaconStyle: 'classic',
   },
 
@@ -576,6 +693,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#17918F',
     spotlightRgb: '23, 145, 143',
     image: '/assets/bottles/versace-eros.png',
+    price: 490,
+    originalPrice: 580,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 380,
+    badge: 'عطر الجاذبية الإيطالي',
     flaconStyle: 'classic',
   },
 
@@ -606,6 +729,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#D89047',
     spotlightRgb: '216, 144, 71',
     image: '/assets/bottles/ysl-libre.png',
+    price: 580,
+    originalPrice: 670,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 410,
+    badge: 'عطر المرأة المستقلة',
     flaconStyle: 'classic',
   },
 
@@ -636,6 +765,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#1A2954',
     spotlightRgb: '26, 41, 84',
     image: '/assets/bottles/ch-good-girl.png',
+    price: 530,
+    originalPrice: 620,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 390,
+    badge: 'الأكثر جاذبية',
     flaconStyle: 'classic',
   },
 
@@ -666,6 +801,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#1FA694',
     spotlightRgb: '31, 166, 148',
     image: '/assets/bottles/xerjoff-erba-pura.jpg',
+    price: 990,
+    originalPrice: 1150,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 360,
+    badge: 'سحر الفواكه المخملي',
     flaconStyle: 'classic',
   },
 
@@ -696,6 +837,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#966E2D',
     spotlightRgb: '150, 110, 45',
     image: '/assets/bottles/initio-oud-for-greatness.png',
+    price: 1250,
+    originalPrice: 1400,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 320,
+    badge: 'هيبة العود والزعفران',
     flaconStyle: 'classic',
   },
 
@@ -726,6 +873,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#C44520',
     spotlightRgb: '196, 69, 32',
     image: '/assets/bottles/dior-fahrenheit.png',
+    price: 490,
+    originalPrice: 560,
+    inStock: true,
+    rating: 4.7,
+    reviewsCount: 280,
+    badge: 'كلاسيكي جريء',
     flaconStyle: 'dior',
   },
 
@@ -756,6 +909,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#8C1D38',
     spotlightRgb: '140, 29, 56',
     image: '/assets/bottles/tom-ford-lost-cherry.png',
+    price: 1150,
+    originalPrice: 1300,
+    inStock: true,
+    rating: 4.9,
+    reviewsCount: 260,
+    badge: 'كرز فاخر مسكر',
     flaconStyle: 'tom-ford',
   },
 
@@ -786,6 +945,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#D06E2E',
     spotlightRgb: '208, 110, 46',
     image: '/assets/bottles/terre-d-hermes.png',
+    price: 520,
+    originalPrice: 590,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 310,
+    badge: 'أناقة ترابية نقية',
     flaconStyle: 'classic',
   },
 
@@ -816,6 +981,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#E290A8',
     spotlightRgb: '226, 144, 168',
     image: '/assets/bottles/lancome-la-vie-est-belle.png',
+    price: 480,
+    originalPrice: 550,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 470,
+    badge: 'بهجة السوسن والفانيليا',
     flaconStyle: 'classic',
   },
 
@@ -846,6 +1017,12 @@ export const PERFUMES: PerfumeItem[] = [
     spotlightColor: '#4CAEC7',
     spotlightRgb: '76, 174, 199',
     image: '/assets/bottles/dg-light-blue-intense.png',
+    price: 430,
+    originalPrice: 510,
+    inStock: true,
+    rating: 4.8,
+    reviewsCount: 320,
+    badge: 'انتعاش البحر الأبيض المتوسط',
     flaconStyle: 'classic',
   },
 ];

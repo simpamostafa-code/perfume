@@ -1,5 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight, ChevronLeft, ChevronRight, Menu, Sparkles, Clock, Calendar, ShieldCheck } from 'lucide-react';
+import {
+  ArrowRight,
+  ChevronLeft,
+  ChevronRight,
+  Menu,
+  Sparkles,
+  Clock,
+  Calendar,
+  ShieldCheck,
+  ShoppingBag,
+  Send,
+  Edit3,
+  Star,
+} from 'lucide-react';
 import {
   COLLECTION_INFO,
   PERFUMES,
@@ -22,6 +35,11 @@ interface PerfumeDetailViewProps {
   onPrev: () => void;
   onNext: () => void;
   onOpenIndex: () => void;
+  onAddToCart?: (perfume: PerfumeItem) => void;
+  onDirectBuyWhatsApp?: (perfume: PerfumeItem) => void;
+  isAdmin?: boolean;
+  onEditPerfume?: (perfume: PerfumeItem) => void;
+  currency?: string;
 }
 
 const FADE_OUT_DURATION_MS = 460;
@@ -34,6 +52,11 @@ export function PerfumeDetailView({
   onPrev,
   onNext,
   onOpenIndex,
+  onAddToCart,
+  onDirectBuyWhatsApp,
+  isAdmin = false,
+  onEditPerfume,
+  currency = 'ر.س',
 }: PerfumeDetailViewProps) {
   const formattedIndex = String(currentIndex + 1).padStart(2, '0');
   const formattedTotal = String(total).padStart(2, '0');
@@ -196,6 +219,83 @@ export function PerfumeDetailView({
             <div className="flex items-center gap-1.5">
               <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
               <span>{perfume.concentration} · {perfume.volume}</span>
+            </div>
+          </div>
+
+          {/* Luxury Commercial Sales Bar */}
+          <div className="mt-6 w-full max-w-lg rounded-xl border border-[#D4AF37]/30 bg-gradient-to-b from-[#131217] to-[#0A0A0E] p-4 shadow-xl">
+            {/* Price & Rating & Stock */}
+            <div className="flex items-center justify-between border-b border-white/10 pb-3">
+              <div>
+                <span className="text-[11px] text-white/50">السعر الرسمي للمنفذ:</span>
+                <div className="mt-0.5 flex items-baseline gap-2.5">
+                  <span className="font-display text-2xl font-semibold text-[#D4AF37]">
+                    {perfume.price} {currency}
+                  </span>
+                  {perfume.originalPrice && (
+                    <span className="text-sm text-white/40 line-through">
+                      {perfume.originalPrice} {currency}
+                    </span>
+                  )}
+                  {perfume.originalPrice && (
+                    <span className="rounded bg-red-500/20 px-1.5 py-0.5 text-[10px] font-bold text-red-300">
+                      وفر {Math.round(((perfume.originalPrice - perfume.price) / perfume.originalPrice) * 100)}%
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col items-end gap-1">
+                <div className="flex items-center gap-1 text-xs text-amber-400">
+                  <Star className="h-3.5 w-3.5 fill-amber-400" />
+                  <span className="font-bold">{perfume.rating || 4.9}</span>
+                  <span className="text-[10px] text-white/40">({perfume.reviewsCount || 120} تقييم)</span>
+                </div>
+                <span
+                  className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${
+                    perfume.inStock
+                      ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-400'
+                      : 'border border-red-500/30 bg-red-500/10 text-red-400'
+                  }`}
+                >
+                  {perfume.inStock ? '● متوفر بالمستودع الفوري' : '○ نفد مؤقتاً'}
+                </span>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="mt-3.5 flex flex-wrap gap-2.5">
+              <button
+                type="button"
+                onClick={() => onAddToCart && onAddToCart(perfume)}
+                disabled={!perfume.inStock}
+                className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[#D4AF37] px-4 py-2.5 text-xs font-semibold text-black shadow-lg shadow-[#D4AF37]/20 transition-transform active:scale-95 hover:bg-[#e0be49] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <ShoppingBag className="h-4 w-4" />
+                <span>{perfume.inStock ? 'أضف إلى حقيبة التسوق' : 'غير متوفر للطلب'}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => onDirectBuyWhatsApp && onDirectBuyWhatsApp(perfume)}
+                className="flex cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-emerald-500/50 bg-emerald-600/20 px-4 py-2.5 text-xs font-medium text-emerald-300 transition-colors hover:bg-emerald-600/30"
+              >
+                <Send className="h-3.5 w-3.5" />
+                <span className="hidden sm:inline">طلب فوري عبر واتساب</span>
+                <span className="sm:hidden">واتساب</span>
+              </button>
+
+              {isAdmin && (
+                <button
+                  type="button"
+                  onClick={() => onEditPerfume && onEditPerfume(perfume)}
+                  className="flex cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-white/20 bg-white/[0.05] px-3 py-2.5 text-xs text-white hover:border-[#D4AF37] hover:text-[#D4AF37]"
+                  title="تعديل هذا العطر وسعره كمدير"
+                >
+                  <Edit3 className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">تعديل</span>
+                </button>
+              )}
             </div>
           </div>
         </div>

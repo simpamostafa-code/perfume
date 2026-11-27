@@ -154,7 +154,16 @@ export function PerfumeAlcove({
         <span className="font-display text-base leading-tight text-[#F8F6F2] sm:text-lg">
           {perfume.name}
         </span>
-        <span className="text-[10px] text-white/50">{perfume.family}</span>
+        <div className="mt-0.5 flex items-center gap-2">
+          <span className="text-[11px] font-semibold text-[#D4AF37]">
+            {perfume.price} ر.س
+          </span>
+          {perfume.originalPrice && (
+            <span className="text-[10px] text-white/40 line-through">
+              {perfume.originalPrice}
+            </span>
+          )}
+        </div>
       </div>
     </button>
   );
