@@ -51,7 +51,7 @@ export const COLLECTION_INFO = {
   brandName: 'موسوعة العطور العالمية',
   brandEn: 'Haute Parfumerie Internationale',
   collectionTitle: 'روائع العطور العالمية',
-  collectionSubtitle: 'أيقونات العطور الفرنسية والنيش النادر والعود الملكي تحت ضوء الحجر',
+  collectionSubtitle: 'صور زجاجات العطور العالمية الأصلية تحت إضاءة الحجر السينمائية',
   editionLabel: 'المجموعة العالمية الشاملة · ٢٠٢٦',
 } as const;
 
@@ -95,7 +95,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان مركز (Elixir)',
     spotlightColor: '#254E80',
     spotlightRgb: '37, 78, 128',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/dior-sauvage.png',
     flaconStyle: 'dior',
   },
 
@@ -125,7 +125,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان (Parfum)',
     spotlightColor: '#1A3358',
     spotlightRgb: '26, 51, 88',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/bleu-de-chanel.png',
     flaconStyle: 'chanel',
   },
 
@@ -155,7 +155,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'إكستريت دو بارفان (Extrait)',
     spotlightColor: '#C0152F',
     spotlightRgb: '192, 21, 47',
-    image: '/src/assets/images/perfume_burgundy_1795787429674.jpg',
+    image: '/assets/bottles/baccarat-rouge-540.png',
     flaconStyle: 'baccarat',
   },
 
@@ -185,7 +185,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان ملكي',
     spotlightColor: '#A4B0BE',
     spotlightRgb: '164, 176, 190',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/creed-aventus.png',
     flaconStyle: 'creed',
   },
 
@@ -215,7 +215,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان برايفت بليند',
     spotlightColor: '#D99B38',
     spotlightRgb: '217, 155, 56',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/tom-ford-tobacco-vanille.png',
     flaconStyle: 'tom-ford',
   },
 
@@ -245,7 +245,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان برايفت بليند',
     spotlightColor: '#6B513E',
     spotlightRgb: '107, 81, 62',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/tom-ford-oud-wood.png',
     flaconStyle: 'tom-ford',
   },
 
@@ -275,7 +275,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان فاخر',
     spotlightColor: '#8C5224',
     spotlightRgb: '140, 82, 36',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/lv-ombre-nomade.jpg',
     flaconStyle: 'classic',
   },
 
@@ -305,7 +305,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان',
     spotlightColor: '#E29738',
     spotlightRgb: '226, 151, 56',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/kilian-angels-share.jpg',
     flaconStyle: 'kilian',
   },
 
@@ -335,7 +335,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان',
     spotlightColor: '#BD4871',
     spotlightRgb: '189, 72, 113',
-    image: '/src/assets/images/perfume_soft_rose_1795787425336.jpg',
+    image: '/assets/bottles/ysl-black-opium.png',
     flaconStyle: 'classic',
   },
 
@@ -365,7 +365,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان ملكي',
     spotlightColor: '#2B547E',
     spotlightRgb: '43, 84, 126',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/pdm-layton.png',
     flaconStyle: 'marly',
   },
 
@@ -395,7 +395,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان',
     spotlightColor: '#E8A3B8',
     spotlightRgb: '232, 163, 184',
-    image: '/src/assets/images/perfume_soft_rose_1795787425336.jpg',
+    image: '/assets/bottles/pdm-delina.png',
     flaconStyle: 'marly',
   },
 
@@ -425,7 +425,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان (Parfum)',
     spotlightColor: '#D4AF37',
     spotlightRgb: '212, 175, 55',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/chanel-no-5.png',
     flaconStyle: 'chanel',
   },
 
@@ -455,7 +455,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان إكستريم',
     spotlightColor: '#1F3A60',
     spotlightRgb: '31, 58, 96',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/amouage-interlude.png',
     flaconStyle: 'amouage',
   },
 
@@ -485,7 +485,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان كولونيا نقي',
     spotlightColor: '#3480B8',
     spotlightRgb: '52, 128, 184',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/roja-elysium.png',
     flaconStyle: 'classic',
   },
 
@@ -515,7 +515,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان نيش',
     spotlightColor: '#C49E6C',
     spotlightRgb: '196, 158, 108',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/le-labo-santal-33.png',
     flaconStyle: 'classic',
   },
 
@@ -545,7 +545,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان مركز (Parfum)',
     spotlightColor: '#235D7A',
     spotlightRgb: '35, 93, 122',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/acqua-di-gio.png',
     flaconStyle: 'classic',
   },
 
@@ -575,7 +575,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان (Parfum)',
     spotlightColor: '#17918F',
     spotlightRgb: '23, 145, 143',
-    image: '/src/assets/images/perfume_light_green_1795787427351.jpg',
+    image: '/assets/bottles/versace-eros.png',
     flaconStyle: 'classic',
   },
 
@@ -605,7 +605,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان إنتنس',
     spotlightColor: '#D89047',
     spotlightRgb: '216, 144, 71',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/ysl-libre.png',
     flaconStyle: 'classic',
   },
 
@@ -635,7 +635,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان',
     spotlightColor: '#1A2954',
     spotlightRgb: '26, 41, 84',
-    image: '/src/assets/images/perfume_deep_blue_1795787428236.jpg',
+    image: '/assets/bottles/ch-good-girl.png',
     flaconStyle: 'classic',
   },
 
@@ -665,7 +665,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان مخملي',
     spotlightColor: '#1FA694',
     spotlightRgb: '31, 166, 148',
-    image: '/src/assets/images/perfume_light_green_1795787427351.jpg',
+    image: '/assets/bottles/xerjoff-erba-pura.jpg',
     flaconStyle: 'classic',
   },
 
@@ -695,7 +695,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان نيش',
     spotlightColor: '#966E2D',
     spotlightRgb: '150, 110, 45',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/initio-oud-for-greatness.png',
     flaconStyle: 'classic',
   },
 
@@ -725,7 +725,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو تواليت كلاسيك',
     spotlightColor: '#C44520',
     spotlightRgb: '196, 69, 32',
-    image: '/src/assets/images/perfume_burgundy_1795787429674.jpg',
+    image: '/assets/bottles/dior-fahrenheit.png',
     flaconStyle: 'dior',
   },
 
@@ -755,7 +755,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان برايفت بليند',
     spotlightColor: '#8C1D38',
     spotlightRgb: '140, 29, 56',
-    image: '/src/assets/images/perfume_burgundy_1795787429674.jpg',
+    image: '/assets/bottles/tom-ford-lost-cherry.png',
     flaconStyle: 'tom-ford',
   },
 
@@ -785,7 +785,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'بارفان خالص (Parfum)',
     spotlightColor: '#D06E2E',
     spotlightRgb: '208, 110, 46',
-    image: '/src/assets/images/perfume_golden_amber_1795787424622.jpg',
+    image: '/assets/bottles/terre-d-hermes.png',
     flaconStyle: 'classic',
   },
 
@@ -815,7 +815,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان',
     spotlightColor: '#E290A8',
     spotlightRgb: '226, 144, 168',
-    image: '/src/assets/images/perfume_soft_rose_1795787425336.jpg',
+    image: '/assets/bottles/lancome-la-vie-est-belle.png',
     flaconStyle: 'classic',
   },
 
@@ -845,7 +845,7 @@ export const PERFUMES: PerfumeItem[] = [
     concentration: 'أو دو بارفان إنتنس',
     spotlightColor: '#4CAEC7',
     spotlightRgb: '76, 174, 199',
-    image: '/src/assets/images/perfume_light_green_1795787427351.jpg',
+    image: '/assets/bottles/dg-light-blue-intense.png',
     flaconStyle: 'classic',
   },
 ];

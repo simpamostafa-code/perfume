@@ -98,11 +98,10 @@ export function CollectionIndexDrawer({
                   key={cat.id}
                   type="button"
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`rounded-full px-3 py-1 text-[11px] whitespace-nowrap transition-colors ${
-                    isSelected
+                  className={`rounded-full px-3 py-1 text-[11px] whitespace-nowrap transition-colors ${isSelected
                       ? 'bg-[#D4AF37] font-medium text-black'
                       : 'border border-white/10 bg-white/5 text-white/70 hover:bg-white/10'
-                  }`}
+                    }`}
                 >
                   {cat.label}
                 </button>
@@ -165,11 +164,10 @@ export function CollectionIndexDrawer({
                           <span>{perfume.gender}</span>
                         </div>
                         <p
-                          className={`mt-0.5 font-display text-lg sm:text-xl transition-colors ${
-                            isCurrent
+                          className={`mt-0.5 font-display text-lg sm:text-xl transition-colors ${isCurrent
                               ? 'text-white'
                               : 'text-[#F5F3EF]/90 group-hover:text-white'
-                          }`}
+                            }`}
                         >
                           {perfume.name}
                         </p>

@@ -20,14 +20,23 @@ export function PerfumeBottleVisual({
   }
 
   return (
-    <div className={`relative flex items-center justify-center ${className}`}>
+    <div className={`relative flex h-full w-full items-center justify-center ${className}`}>
+      {/* Soft spotlight halo directly beneath real bottle */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-4 bottom-2 h-1/2 rounded-full blur-2xl opacity-40 transition-opacity"
+        style={{
+          backgroundColor: `rgba(${perfume.spotlightRgb}, 0.55)`,
+        }}
+      />
+
       <img
         src={perfume.image}
-        alt={`زجاجة عطر ${perfume.name} — ${perfume.brand}`}
+        alt={`زجاجة عطر ${perfume.name} الأصلية — ${perfume.brand}`}
         referrerPolicy="no-referrer"
         loading={priority ? 'eager' : 'lazy'}
         onError={() => setUseFallback(true)}
-        className="bottle-feather-mask pointer-events-none select-none h-full w-full object-contain mix-blend-lighten brightness-[1.04] contrast-[1.06]"
+        className="pointer-events-none select-none h-full w-full max-h-full object-contain filter drop-shadow-[0_22px_35px_rgba(0,0,0,0.92)] brightness-[1.03] contrast-[1.05] transition-transform duration-300"
       />
     </div>
   );
@@ -118,7 +127,7 @@ function LuxuryFlaconRender({
   );
 }
 
-function renderCap(style: string, perfume: PerfumeItem) {
+function renderCap(style: string, _perfume: PerfumeItem) {
   switch (style) {
     case 'chanel':
       return (
